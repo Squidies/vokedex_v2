@@ -1,23 +1,27 @@
 <template lang="pug">
-  #Vokedex
-    dex-list
-    dex-display
+#Vokedex.Dex(:class="{closed: !hasPower}")
+  left-page
+  hinge
+  right-page
 </template>
 
 <script>
 /* eslint-disable */
 import _ from 'lodash'
 import axios from 'axios'
-import DexList from './components/DexList'
-import DexDisplay from './components/DexDisplay'
+
+import leftPage from './ui/leftpage'
+import Hinge from './ui/hinge'
+import rightPage from './ui/rightpage'
 
 const _BASE_URL = 'https://pokeapi.co/api/v2'
 
 export default {
   name: 'Vokedex',
   components: {
-    'dex-list': DexList,
-    'dex-display': DexDisplay
+    'left-page': leftPage,
+    'hinge': Hinge,
+    'right-page': rightPage
   },
   mounted () {
     // initialize app if pokelist is empty
@@ -47,15 +51,51 @@ export default {
               id: id
             }
           })
+
+          // update new pokelist to data store
           this.$store.dispatch('update_list', list)
         })
+    }
+  },
+  computed: {
+    hasPower () {
+      return this.$store.state.power
     }
   }
 }
 </script>
 
 <style lang="scss">
-  #Vokedex {
-    // display: flex;
+@import 'static/__vars.scss';
+@import 'static/__mixins.scss';
+
+body {
+  @include flx_cc();
+  background: $bg;
+  color: $color;
+  font-family: $sans;
+}
+
+.Dex {
+  display: flex;
+  align-items: flex-end;
+  // opacity: 0.3;
+
+  // -- start/select buttons for left and right pages
+
+  .startselect {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 130px;
+
+    .bttn {
+      width: 55px;
+      height: 10px;
+      border-radius: 4px;
+      box-shadow: 0 0 3px $black;
+      background: $vuegreendark;
+    }
   }
+}
 </style>

@@ -1,11 +1,13 @@
 <template lang="pug">
-  .list
-    .search
-      input.pokesearch(type="text" v-model="searchString" placeholder="Search by Name or PokéID")
-      button.btn.clear(@click="clearSearchInput") clear
-    ul
-      li.li(v-if="list.length === 0") Sorry, no Pokémon found.
-      li.li(v-else v-for="(poke) in list" @click="get_poke_info(poke.url, poke.id)") \#{{ formatPokeID(poke.id) }}: {{ capitalize(poke.name) }}
+.list
+  ul(v-if="!listexists")
+    li.li ...loading
+  ul(v-else)
+    li.li(v-if="list.length === 0 && listexists") Sorry, no Pokémon found.
+    li.li(v-else v-for="(poke) in list" @click="get_poke_info(poke.url, poke.id)") \#{{ formatPokeID(poke.id) }}: {{poke.name | capitalize}}
+  .search
+    input.pokesearch(type="text" v-model="searchString" placeholder="Search by Name or PokéID")
+    button.btn.clear(@click="clearSearchInput") Clear
 </template>
 
 <script>
@@ -24,6 +26,8 @@ export default {
     get_poke_info (url, id) {
       let pokeURL = `${_BASE_URL}/pokemon/${id}`
       let poke = {}
+
+      this.$store.dispatch('is_searching')
 
       // get dex flavor text
       axios.get(url)
@@ -49,30 +53,39 @@ export default {
               this.$store.dispatch('update_current_poke', poke)
             })
         })
+        // finished searching
+        .then(() => {
+          this.$store.dispatch('done_searching')
+        })
     },
     formatPokeID (id) {
       return (id).toString().padStart(2, '0')
-    },
-    capitalize (val) {
-      return _.capitalize(val)
     },
     clearSearchInput () {
       this.searchString = ''
     }
   },
   computed: {
+    listexists () {
+      return this.$store.state.pokelistexists
+    },
     list () {
+      // - strip spaces from input and check
+      // against current pokelist. remove entries as
+      // needed
+
       let pokelist = this.$store.state.pokelist
+      let string = _.trim(this.searchString)
 
       return pokelist.filter(pokelist => {
-        // - search by name
-        // - search by id
-        // - else return the whole list
         if (isNaN(this.searchString)) {
-          return pokelist.name.toLowerCase().includes(this.searchString.toLowerCase())
+          // - search by name
+          return pokelist.name.toLowerCase().includes(string.toLowerCase())
         } else if (!isNaN(this.searchString)) {
-          return pokelist.id.replace(/^0+/, '').includes(this.searchString.replace(/^0+/, ''))
+          // - search by id
+          return pokelist.id.replace(/^0+/, '').includes(string.replace(/^0+/, ''))
         } else {
+          // - else return the whole list
           return pokelist
         }
       })
@@ -81,14 +94,75 @@ export default {
 }
 </script>
 
-<!-- Add "scoped" attribute to limit CSS to this component only -->
 <style lang="scss">
+@import '../static/__vars.scss';
+
+.list-scrollbar {
+  width: 275px;
+  height: 100px;
+}
+
 .list {
-  max-height: 300px;
-  overflow: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 4px;
+
+  ul {
+    overflow: auto;
+    width: 300px;
+    height: 100px;
+    padding: 4px 8px;
+    margin: 0;
+    border: 4px solid $listouter;
+    border-bottom: 0;
+    border-radius: 8px 8px 0 0;
+    color: $bg;
+    background: $color;
+    list-style: none;
+  }
 }
 
 .li {
   cursor: pointer;
+}
+
+.search {
+  display: flex;
+  width: 300px;
+  justify-content: space-between;
+  border: 4px solid $listouter;
+  border-top: 0;
+  border-radius: 0 0 8px 8px;
+  background: $color;
+
+  input:focus {
+    z-index: 1001;
+  }
+}
+
+.pokesearch {
+  flex: 1;
+  background: darken($color, 3%);
+  padding: 8px;
+  border: 0;
+  color: $bg;
+  font-size: 14px;
+  border-radius: 0 0 0 4px;
+
+  &::placeholder {
+    color: $bg;
+  }
+}
+
+.clear {
+  appearance: none;
+  border: 0;
+  border-radius: 0 0 4px 0;
+  background: $dexred;
+  font-size: 14px;
+  color: $color;
+  z-index: 1000;
 }
 </style>
