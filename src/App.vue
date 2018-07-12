@@ -1,10 +1,8 @@
 <template lang="pug">
-  #Vokedex.Dex
+  #Vokedex.Dex(:class="{closed: !hasPower}")
     left-page
     hinge
     right-page
-    //- dex-list
-    //- dex-display
 </template>
 
 <script>
@@ -15,8 +13,6 @@ import axios from 'axios'
 import leftPage from './ui/leftpage'
 import Hinge from './ui/hinge'
 import rightPage from './ui/rightpage'
-import DexList from './components/DexList'
-import DexDisplay from './components/DexDisplay'
 
 const _BASE_URL = 'https://pokeapi.co/api/v2'
 
@@ -25,9 +21,9 @@ export default {
   components: {
     'left-page': leftPage,
     'hinge': Hinge,
-    'right-page': rightPage,
-    'dex-list': DexList,
-    'dex-display': DexDisplay
+    'right-page': rightPage
+    // 'dex-list': DexList,
+    // 'dex-display': DexDisplay
   },
   mounted () {
     // initialize app if pokelist is empty
@@ -62,41 +58,46 @@ export default {
           this.$store.dispatch('update_list', list)
         })
     }
+  },
+  computed: {
+    hasPower () {
+      return this.$store.state.power
+    }
   }
 }
 </script>
 
 <style lang="scss">
-  @import 'static/__vars.scss';
-  @import 'static/__mixins.scss';
+@import 'static/__vars.scss';
+@import 'static/__mixins.scss';
 
-  body {
-    @include flx_cc();
-    background: $bg;
-    color: $color;
-  }
+body {
+  @include flx_cc();
+  background: $bg;
+  color: $color;
+  font-family: $sans;
+}
 
-  .Dex {
+.Dex {
+  display: flex;
+  align-items: flex-end;
+  opacity: 0.3;
+
+  // -- start/select buttons for left and right pages
+
+  .startselect {
     display: flex;
-    align-items: flex-end;
-    opacity: 0.3;
+    align-items: center;
+    justify-content: space-between;
+    width: 130px;
 
-    // -- start/select buttons for left and right pages
-
-    .startselect {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      width: 130px;
-
-      .bttn {
-        width: 55px;
-        height: 10px;
-        border-radius: 4px;
-        box-shadow: 0 0 3px $black;
-        background: $vuegreendark;
-      }
+    .bttn {
+      width: 55px;
+      height: 10px;
+      border-radius: 4px;
+      box-shadow: 0 0 3px $black;
+      background: $vuegreendark;
     }
   }
-
+}
 </style>

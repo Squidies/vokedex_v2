@@ -6,7 +6,8 @@ Vue.use(Vuex)
 
 const state = {
   pokelist: [],
-  current_poke: {}
+  current_poke: {},
+  power: false
 }
 
 const mutations = {
@@ -18,6 +19,9 @@ const mutations = {
   },
   UPDATE_CURRENT_POKE (state, poke) {
     state.current_poke = poke
+  },
+  TOGGLE_POWER (state) {
+    state.power = !state.power
   }
 }
 
@@ -30,6 +34,9 @@ const actions = {
   },
   update_current_poke ({commit}, poke) {
     commit('UPDATE_CURRENT_POKE', poke)
+  },
+  toggle_power ({commit}) {
+    commit('TOGGLE_POWER')
   }
 }
 

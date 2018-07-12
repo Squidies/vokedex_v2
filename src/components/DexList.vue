@@ -1,11 +1,11 @@
 <template lang="pug">
   .list
-    .search
-      input.pokesearch(type="text" v-model="searchString" placeholder="Search by Name or PokéID")
-      button.btn.clear(@click="clearSearchInput") clear
     ul
       li.li(v-if="list.length === 0") Sorry, no Pokémon found.
       li.li(v-else v-for="(poke) in list" @click="get_poke_info(poke.url, poke.id)") \#{{ formatPokeID(poke.id) }}: {{ capitalize(poke.name) }}
+    .search
+      input.pokesearch(type="text" v-model="searchString" placeholder="Search by Name or PokéID")
+      button.btn.clear(@click="clearSearchInput") Clear
 </template>
 
 <script>
@@ -81,14 +81,65 @@ export default {
 }
 </script>
 
-<!-- Add "scoped" attribute to limit CSS to this component only -->
 <style lang="scss">
+@import '../static/__vars.scss';
+
 .list {
-  max-height: 300px;
-  overflow: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 4px;
+
+  ul {
+    overflow: auto;
+    width: 300px;
+    height: 150px;
+    padding: 4px 8px;
+    margin: 0;
+    border: 4px solid $listouter;
+    border-bottom: 0;
+    border-radius: 8px 8px 0 0;
+    color: $bg;
+    background: $color;
+    list-style: none;
+  }
 }
 
 .li {
   cursor: pointer;
+}
+
+.search {
+  display: flex;
+  width: 300px;
+  justify-content: space-between;
+  border: 4px solid $listouter;
+  border-top: 0;
+  border-radius: 0 0 8px 8px;
+  background: $color;
+}
+
+.pokesearch {
+  flex: 1;
+  background: lighten($dexgreen, 30%);
+  padding: 8px;
+  border: 0;
+  color: $bg;
+  font-size: 14px;
+  border-radius: 0 0 0 4px;
+
+  &::placeholder {
+    color: $bg;
+  }
+}
+
+.clear {
+  appearance: none;
+  border: 0;
+  border-radius: 0 0 4px 0;
+  background: $dexred;
+  font-size: 14px;
+  color: $color;
 }
 </style>

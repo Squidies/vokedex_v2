@@ -17,6 +17,7 @@ $dexbg: $vuegreen;
 $dexbgdark: $vuegreendark;
 $dexbgalt: $vueblue;
 $displayouter: $greylite;
+$listouter: $grey;
 
 // -- GRADIENTS -- //
 $hingebg: linear-gradient(to right, $vuegreenshadow 0%, $vuegreen 50%, $vuegreenshadow 100%);
@@ -30,3 +31,7 @@ $shadow: -5px 5px 0 5px $vuegreenshadow;
 // -- BORDER RADIUS --//
 $dexradius: 30px;
 $dexradius_lg: 160px;
+
+// -- FONTS -- //
+$sans: 'Open Sans', sans-serif;
+$mono: 'VT323', monospace;

@@ -1,10 +1,8 @@
 <template lang="pug">
-  .display
-    .wrapper(v-if="current_pokemon")
+  .wrapper(v-if="current_pokemon")
+    .pokeinfo
       .avatar
         img(:src="current_pokemon.sprite")
-      .entry {{current_pokemon.dexEntry}}
-      br
       .stats
         .name name: {{current_pokemon.name}}
         .id id: {{current_pokemon.id}}
@@ -14,6 +12,7 @@
         .types
           ul
             li(v-for="(type, index) in current_pokemon.types") Type {{index + 1}}: {{type.type.name}}
+    .entry {{current_pokemon.dexEntry}}
 </template>
 
 <script>
@@ -31,6 +30,21 @@ export default {
 }
 </script>
 
-<!-- Add "scoped" attribute to limit CSS to this component only -->
 <style lang="scss">
+@import '../static/__vars.scss';
+
+.wrapper {
+  max-height: 100%;
+  overflow: auto;
+}
+
+.pokeinfo {
+  display: flex;
+  font-family: $mono;
+}
+
+.entry,
+.stats {
+  color: $bg;
+}
 </style>
