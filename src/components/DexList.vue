@@ -1,7 +1,7 @@
 <template lang="pug">
 .list
   ul
-    scrolly(class="scrollbar")
+    scrolly(class="scrollbar list-scrollbar")
       scrolly-viewport
           li.li(v-if="list.length === 0") Sorry, no Pokémon found.
           li.li(v-else v-for="(poke) in list" @click="get_poke_info(poke.url, poke.id)") \#{{ formatPokeID(poke.id) }}: {{ capitalize(poke.name) }}
@@ -93,8 +93,9 @@ export default {
 <style lang="scss">
 @import '../static/__vars.scss';
 
-.closed .scrollbar {
-  visibility: hidden;
+.list-scrollbar {
+  width: 275px;
+  height: 100px;
 }
 
 .list {
@@ -155,17 +156,5 @@ export default {
   font-size: 14px;
   color: $color;
 }
-
-.scrollbar {
-  width: 275px;
-  height: 100px;
-
-  .scrolly-bar {
-    opacity: 1;
-    width: 6px;
-    border: 0;
-    border-radius: 5px;
-    background: $listouter;
-  }
-}
 </style>
+

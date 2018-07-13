@@ -97,5 +97,20 @@ body {
       background: $vuegreendark;
     }
   }
+
+  .closed .scrollbar {
+    visibility: hidden;
+  }
+
+  .scrollbar {
+
+    .scrolly-bar {
+      opacity: 1;
+      width: 6px;
+      border: 0;
+      border-radius: 5px;
+      background: $listouter;
+    }
+  }
 }
 </style>

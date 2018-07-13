@@ -23,6 +23,8 @@ $listouter: $grey;
 $hingebg: linear-gradient(to right, $vuegreenshadow 0%, $vuegreen 50%, $vuegreenshadow 100%);
 $hng: linear-gradient(to right, rgba(30,11,11,0.5) 0%,rgba(25,71,51,0.5) 50%,rgba(30,11,11,0.5) 100%);
 $bar: linear-gradient($black, $black);
+$pokeball: linear-gradient(to bottom, white 0%, white 45%, $vueblue 45%, $vueblue 55%, $vuegreen 55%, $vuegreen 100%);
+
 
 // -- SHADOWS -- //
 $shadow: -5px 5px 0 5px $vuegreenshadow;
