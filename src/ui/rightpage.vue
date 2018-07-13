@@ -1,28 +1,28 @@
 <template lang="pug">
-  .right
-    .topcurve
-    .infoDisplay
-      dex-list
-    .keyboard
-      //- generate 10 keys for keyboard
-      - for(var i = 10; i > 0; i--)
-        .key
-    .ctrlbttns
-      .topbttns
-        .dots
-          .dot
-          .dot
-        .startselect
-          .bttn.start
-          .bttn.select
-      .centerbttns
-        .dirbttns
-          .lft.bttn
-          .rgt.bttn
-        .cbttn
-      .bottombttns
-        .bttn
-        .bttn
+.right
+  .topcurve
+  .infoDisplay
+    dex-list
+  .keyboard
+    //- generate 10 keys for keyboard
+    - for(var i = 10; i > 0; i--)
+      .key
+  .ctrlbttns
+    .topbttns
+      .dots
+        .dot
+        .dot
+      .startselect
+        .bttn.start
+        .bttn.select
+    .centerbttns
+      .dirbttns
+        .lft.bttn
+        .rgt.bttn
+      .cbttn
+    .bottombttns
+      .bttn
+      .bttn
 </template>
 
 <script>
@@ -62,15 +62,16 @@ export default {
     border-radius: 0 160px 0 0;
 
     &:after {
-      display: block;
-      content: '';
-      width: 250px;
-      height: 150px;
-      background: $bg;
       position: absolute;
-      right: -150px;
+      right: -165px;
+      top: -35px;
+      display: block;
+      width: 250px;
+      height: 100px;
+      background: $bg;
       border-radius: 0 0 0 $dexradius_lg;
-      top: -72px;
+      content: '';
+
     }
   }
 
@@ -95,6 +96,10 @@ export default {
     border-radius: 4px;
     margin: 2px;
     box-shadow: -2px 2px 1px 0px rgb(33, 45, 59);
+
+    &:active {
+      box-shadow: none;
+    }
   }
 
   // -- CTRL BTTNS -- //

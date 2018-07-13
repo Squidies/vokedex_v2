@@ -1,5 +1,7 @@
 <template lang="pug">
-  .wrapper(v-if="current_pokemon")
+.wrapper
+  .splashscreen(v-if="!current_pokemon") Vokédex
+  .infoscreen(v-else)
     .pokeinfo
       .avatar
         img(:src="current_pokemon.sprite")
@@ -32,10 +34,18 @@ export default {
 
 <style lang="scss">
 @import '../static/__vars.scss';
+@import '../static/__mixins.scss';
 
 .wrapper {
-  max-height: 100%;
+  height: 100%;
   overflow: auto;
+}
+
+.splashscreen {
+  @include flx_cc();
+  width: 100%;
+  height: 100%;
+  color: $bg;
 }
 
 .pokeinfo {

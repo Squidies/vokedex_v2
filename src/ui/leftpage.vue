@@ -1,32 +1,32 @@
 <template lang="pug">
-  .left
-    .topcurve
-    .Pwrbttns
-      #Pwr.Pwr(title="Power" @click="togglePower")
-        .bttn
-      .Pwrlights
-        .pwr_low
-        .pwr_med
-        .pwr_hgh
-    .Display
-      .screen
-        dex-display
-      .bttnbars
-        .displaybttn
-        .speakerbars
-          .spkrbrs
-          .spkrbrs
-    .ControlBttns
-      .leftbttn
-      .center
-        .startselect
-          .bttn.start
-          .bttn.select
-        .pokeid
-          .id
-            div(v-if="currentPokeID") \#{{currentPokeID}}
-      .rightdpad
-        .dpad
+.left
+  .topcurve
+  .Pwrbttns
+    #Pwr.Pwr(title="Power" @click="togglePower")
+      .bttn
+    .Pwrlights
+      .pwr_low
+      .pwr_med
+      .pwr_hgh
+  .Display
+    .screen
+      dex-display
+    .bttnbars
+      .displaybttn
+      .speakerbars
+        .spkrbrs
+        .spkrbrs
+  .ControlBttns
+    .leftbttn
+    .center
+      .startselect
+        .bttn.start
+        .bttn.select
+      .pokeid
+        .id
+          div(v-if="currentPokeID") \#{{currentPokeID}}
+    .rightdpad
+      .dpad
 </template>
 
 <script>

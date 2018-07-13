@@ -1,8 +1,8 @@
 <template lang="pug">
-  #Vokedex.Dex(:class="{closed: !hasPower}")
-    left-page
-    hinge
-    right-page
+#Vokedex.Dex(:class="{closed: !hasPower}")
+  left-page
+  hinge
+  right-page
 </template>
 
 <script>
@@ -22,8 +22,6 @@ export default {
     'left-page': leftPage,
     'hinge': Hinge,
     'right-page': rightPage
-    // 'dex-list': DexList,
-    // 'dex-display': DexDisplay
   },
   mounted () {
     // initialize app if pokelist is empty

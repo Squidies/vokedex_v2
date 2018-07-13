@@ -1,14 +1,18 @@
 <template lang="pug">
-  .list
-    ul
-      li.li(v-if="list.length === 0") Sorry, no Pokémon found.
-      li.li(v-else v-for="(poke) in list" @click="get_poke_info(poke.url, poke.id)") \#{{ formatPokeID(poke.id) }}: {{ capitalize(poke.name) }}
-    .search
-      input.pokesearch(type="text" v-model="searchString" placeholder="Search by Name or PokéID")
-      button.btn.clear(@click="clearSearchInput") Clear
+.list
+  ul
+    scrolly(class="scrollbar")
+      scrolly-viewport
+          li.li(v-if="list.length === 0") Sorry, no Pokémon found.
+          li.li(v-else v-for="(poke) in list" @click="get_poke_info(poke.url, poke.id)") \#{{ formatPokeID(poke.id) }}: {{ capitalize(poke.name) }}
+      scrolly-bar(axis="y")
+  .search
+    input.pokesearch(type="text" v-model="searchString" placeholder="Search by Name or PokéID")
+    button.btn.clear(@click="clearSearchInput") Clear
 </template>
 
 <script>
+import { Scrolly, ScrollyViewport, ScrollyBar } from 'vue-scrolly'
 import _ from 'lodash'
 import axios from 'axios'
 const _BASE_URL = 'https://pokeapi.co/api/v2'
@@ -19,6 +23,11 @@ export default {
     return {
       searchString: ''
     }
+  },
+  components: {
+    'scrolly': Scrolly,
+    'scrolly-viewport': ScrollyViewport,
+    'scrolly-bar': ScrollyBar
   },
   methods: {
     get_poke_info (url, id) {
@@ -84,6 +93,10 @@ export default {
 <style lang="scss">
 @import '../static/__vars.scss';
 
+.closed .scrollbar {
+  visibility: hidden;
+}
+
 .list {
   display: flex;
   flex-direction: column;
@@ -93,8 +106,8 @@ export default {
 
   ul {
     overflow: auto;
-    width: 300px;
-    height: 150px;
+    // width: 300px;
+    // height: 100px;
     padding: 4px 8px;
     margin: 0;
     border: 4px solid $listouter;
@@ -122,7 +135,7 @@ export default {
 
 .pokesearch {
   flex: 1;
-  background: lighten($dexgreen, 30%);
+  background: darken($color, 3%);
   padding: 8px;
   border: 0;
   color: $bg;
@@ -141,5 +154,18 @@ export default {
   background: $dexred;
   font-size: 14px;
   color: $color;
+}
+
+.scrollbar {
+  width: 275px;
+  height: 100px;
+
+  .scrolly-bar {
+    opacity: 1;
+    width: 6px;
+    border: 0;
+    border-radius: 5px;
+    background: $listouter;
+  }
 }
 </style>
