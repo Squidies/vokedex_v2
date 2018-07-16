@@ -1,11 +1,9 @@
 <template lang="pug">
 .wrapper
-  .splashscreen(v-if="!current_pokemon") Vokédex
-    .pokeball
+  .splashscreen(v-if="!current_pokemon || searching") Vokédex
+    pokeball(:class="{'searching': searching}")
   .infoscreen(v-else)
     .pokeinfo
-      .avatar
-        img(:src="current_pokemon.sprite")
       .stats
         .name Name: {{current_pokemon.name | capitalize}}
         .id ID: \#{{current_pokemon.id}}
@@ -15,20 +13,28 @@
         .types
           ul
             li(v-for="(type, index) in current_pokemon.types") Type {{index + 1}}: {{type.type.name | capitalize}}
+      .avatar
+        img(:src="current_pokemon.sprite")
     .entry {{current_pokemon.dexEntry}}
 </template>
 
 <script>
 import _ from 'lodash'
-// import { Scrolly, ScrollyViewport, ScrollyBar } from 'vue-scrolly'
+import pokeball from '../ui/pokeball'
 
 export default {
   name: 'DexDisplay',
+  components: {
+    'pokeball': pokeball
+  },
   computed: {
     current_pokemon () {
       if (!_.isEmpty(this.$store.state.current_poke)) {
         return this.$store.state.current_poke
       }
+    },
+    searching () {
+      return this.$store.state.searching
     }
   }
 }

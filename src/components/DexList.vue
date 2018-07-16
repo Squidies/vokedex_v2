@@ -25,6 +25,8 @@ export default {
       let pokeURL = `${_BASE_URL}/pokemon/${id}`
       let poke = {}
 
+      this.$store.dispatch('is_searching')
+
       // get dex flavor text
       axios.get(url)
         .then(response => {
@@ -48,6 +50,10 @@ export default {
 
               this.$store.dispatch('update_current_poke', poke)
             })
+        })
+        // finished searching
+        .then(() => {
+          this.$store.dispatch('done_searching')
         })
     },
     formatPokeID (id) {

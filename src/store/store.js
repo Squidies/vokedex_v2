@@ -6,7 +6,8 @@ Vue.use(Vuex)
 const state = {
   pokelist: [],
   current_poke: {},
-  power: false
+  power: false,
+  searching: false
 }
 
 const mutations = {
@@ -21,6 +22,12 @@ const mutations = {
   },
   TOGGLE_POWER (state) {
     state.power = !state.power
+  },
+  IS_SEARCHING (state) {
+    state.searching = true
+  },
+  DONE_SEARCHING (state) {
+    state.searching = false
   }
 }
 
@@ -36,6 +43,12 @@ const actions = {
   },
   toggle_power ({commit}) {
     commit('TOGGLE_POWER')
+  },
+  is_searching ({commit}) {
+    commit('IS_SEARCHING')
+  },
+  done_searching ({commit}) {
+    commit('DONE_SEARCHING')
   }
 }
 
