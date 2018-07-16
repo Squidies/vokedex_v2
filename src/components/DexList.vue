@@ -2,7 +2,7 @@
 .list
   ul
     li.li(v-if="list.length === 0") Sorry, no Pokémon found.
-    li.li(v-else v-for="(poke) in list" @click="get_poke_info(poke.url, poke.id)") \#{{ formatPokeID(poke.id) }}: {{ capitalize(poke.name) }}
+    li.li(v-else v-for="(poke) in list" @click="get_poke_info(poke.url, poke.id)") \#{{ formatPokeID(poke.id) }}: {{poke.name | capitalize}}
   .search
     input.pokesearch(type="text" v-model="searchString" placeholder="Search by Name or PokéID")
     button.btn.clear(@click="clearSearchInput") Clear
@@ -52,9 +52,6 @@ export default {
     },
     formatPokeID (id) {
       return (id).toString().padStart(2, '0')
-    },
-    capitalize (val) {
-      return _.capitalize(val)
     },
     clearSearchInput () {
       this.searchString = ''

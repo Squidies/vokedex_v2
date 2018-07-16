@@ -7,14 +7,14 @@
       .avatar
         img(:src="current_pokemon.sprite")
       .stats
-        .name name: {{current_pokemon.name}}
-        .id id: {{current_pokemon.id}}
-        .baseXP baseXP: {{current_pokemon.baseXP}}
-        .height height: {{current_pokemon.height / 10}} m
-        .weight weight: {{current_pokemon.weight / 10}} kg
+        .name Name: {{current_pokemon.name | capitalize}}
+        .id ID: \#{{current_pokemon.id}}
+        .baseXP BaseXP: {{current_pokemon.baseXP}} XP
+        .height Height: {{current_pokemon.height / 10}}m
+        .weight Weight: {{current_pokemon.weight / 10}}kg
         .types
           ul
-            li(v-for="(type, index) in current_pokemon.types") Type {{index + 1}}: {{type.type.name}}
+            li(v-for="(type, index) in current_pokemon.types") Type {{index + 1}}: {{type.type.name | capitalize}}
     .entry {{current_pokemon.dexEntry}}
 </template>
 
@@ -80,5 +80,15 @@ export default {
 .entry,
 .stats {
   color: $bg;
+}
+
+.types ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.entry {
+  font-size: 0.8rem;
 }
 </style>
