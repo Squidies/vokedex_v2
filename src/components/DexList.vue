@@ -1,18 +1,14 @@
 <template lang="pug">
 .list
   ul
-    scrolly(class="scrollbar list-scrollbar")
-      scrolly-viewport
-          li.li(v-if="list.length === 0") Sorry, no Pokémon found.
-          li.li(v-else v-for="(poke) in list" @click="get_poke_info(poke.url, poke.id)") \#{{ formatPokeID(poke.id) }}: {{ capitalize(poke.name) }}
-      scrolly-bar(axis="y")
+    li.li(v-if="list.length === 0") Sorry, no Pokémon found.
+    li.li(v-else v-for="(poke) in list" @click="get_poke_info(poke.url, poke.id)") \#{{ formatPokeID(poke.id) }}: {{ capitalize(poke.name) }}
   .search
     input.pokesearch(type="text" v-model="searchString" placeholder="Search by Name or PokéID")
     button.btn.clear(@click="clearSearchInput") Clear
 </template>
 
 <script>
-import { Scrolly, ScrollyViewport, ScrollyBar } from 'vue-scrolly'
 import _ from 'lodash'
 import axios from 'axios'
 const _BASE_URL = 'https://pokeapi.co/api/v2'
@@ -23,11 +19,6 @@ export default {
     return {
       searchString: ''
     }
-  },
-  components: {
-    'scrolly': Scrolly,
-    'scrolly-viewport': ScrollyViewport,
-    'scrolly-bar': ScrollyBar
   },
   methods: {
     get_poke_info (url, id) {
@@ -107,8 +98,8 @@ export default {
 
   ul {
     overflow: auto;
-    // width: 300px;
-    // height: 100px;
+    width: 300px;
+    height: 100px;
     padding: 4px 8px;
     margin: 0;
     border: 4px solid $listouter;
@@ -157,4 +148,3 @@ export default {
   color: $color;
 }
 </style>
-
