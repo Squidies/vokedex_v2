@@ -1,7 +1,7 @@
 <template lang="pug">
 .list
   ul(v-if="!listexists")
-    li.li ...loading Vokédex
+    li.li ...loading
   ul(v-else)
     li.li(v-if="list.length === 0 && listexists") Sorry, no Pokémon found.
     li.li(v-else v-for="(poke) in list" @click="get_poke_info(poke.url, poke.id)") \#{{ formatPokeID(poke.id) }}: {{poke.name | capitalize}}

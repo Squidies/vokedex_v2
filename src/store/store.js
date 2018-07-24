@@ -9,7 +9,8 @@ const state = {
   current_poke: {},
   first_power_up: true,
   power: false,
-  searching: false
+  searching: false,
+  zoom: false
 }
 
 const mutations = {
@@ -36,6 +37,9 @@ const mutations = {
   },
   FIRST_POWER_UP (state) {
     state.first_power_up = false
+  },
+  TOGGLE_ZOOM (state) {
+    state.zoom = !state.zoom
   }
 }
 
@@ -61,6 +65,9 @@ const actions = {
   },
   first_power_up ({commit}) {
     commit('FIRST_POWER_UP')
+  },
+  togglezoom ({commit}) {
+    commit('TOGGLE_ZOOM')
   }
 }
 

@@ -44,6 +44,11 @@ export default {
 @import '../static/__vars.scss';
 @import '../static/__mixins.scss';
 
+// zoomed styles
+.zoom .wrapper {
+  height: 155px;
+}
+
 .wrapper {
   height: 115px;
   margin-top: 15px;

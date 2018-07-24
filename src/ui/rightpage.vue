@@ -95,7 +95,7 @@ export default {
     background: $dexbgalt;
     border-radius: 4px;
     margin: 2px;
-    box-shadow: -2px 2px 1px 0px rgb(33, 45, 59);
+    box-shadow: $keyshadow;
 
     &:active {
       box-shadow: none;

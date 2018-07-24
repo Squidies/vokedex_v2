@@ -1,15 +1,8 @@
 <template lang="pug">
 .left
-  .topcurve
-  .Pwrbttns
-    #Pwr.Pwr(title="Power" @click="togglePower" @keyup.enter="togglePower" tabindex="1") Power
-      .bttn
-    .Pwrlights
-      .pwr_low
-      .pwr_med
-      .pwr_hgh
+  power-bttns
   .Display
-    .screen
+    .screen(:class="{'zoom': isZoomed}")
       dex-display
     .bttnbars
       .displaybttn
@@ -17,7 +10,9 @@
         .spkrbrs
         .spkrbrs
   .ControlBttns
-    .leftbttn
+    .leftbttn(@click="toggleZoom")
+      span.magzoom.in(v-if="isZoomed")
+      span.magzoom.out(v-else)
     .center
       .startselect
         .bttn.start
@@ -31,20 +26,25 @@
 
 <script>
 import DexDisplay from '../components/DexDisplay'
+import PowerBttns from '../components/PowerBttns'
 
 export default {
   name: 'LeftPage',
   components: {
-    'dex-display': DexDisplay
+    'dex-display': DexDisplay,
+    'power-bttns': PowerBttns
   },
   methods: {
-    togglePower () {
-      this.$store.dispatch('toggle_power')
+    toggleZoom () {
+      this.$store.dispatch('togglezoom')
     }
   },
   computed: {
     currentPokeID () {
       return this.$store.state.current_poke.id
+    },
+    isZoomed () {
+      return this.$store.state.zoom
     }
   }
 }
@@ -82,73 +82,6 @@ export default {
     box-shadow: $shadow;
   }
 
-  // -- PWR BUTTONS -- //
-  .Pwrbttns {
-    position: relative;
-    width: 400px;
-    height: 85px;
-    display: flex;
-    background: $dexbgdark;
-    border-radius: $dexradius 0 0;
-    // overflow: hidden;
-
-    .Pwrlights {
-      display: flex;
-      margin-top: 15px;
-    }
-
-    // other part of topcurve
-    &:after {
-      display: block;
-      width: 240px;
-      height: 100px;
-      background: $dexbg;
-      background: linear-gradient(to right, $dexbg 0%, $dexbg 210px, transparent 210px, transparent);
-      content: '';
-      right: -30px;
-      position: absolute;
-      top: 50px;
-      border-radius: $dexradius_lg 0 0 0;
-    }
-  }
-
-  .Pwr {
-    @include flx_cc;
-    width: 80px;
-    height: 80px;
-    background: linear-gradient(145deg, rgb(53, 73, 94), rgb(28, 38, 49)), $dexbgalt;
-    border: 4px solid $white;
-    border-radius: 50%;
-    margin: 15px;
-    font-family: $mono;
-    cursor: pointer;
-    outline: none;
-
-    &:active {
-      background: $dexbgalt;
-    }
-  }
-
-  [class*="pwr"] {
-    width: 20px;
-    height: 20px;
-    background: green;
-    border-radius: 50%;
-    margin-right: 8px;
-
-    &[class*="low"] {
-      background: $dexred;
-    }
-
-    &[class*="med"] {
-      background: $dexyellow;
-    }
-
-    &[class*="hgh"] {
-      background: $dexgreen;
-    }
-  }
-
   // -- DISPLAY -- //
   .Display {
     position: relative;
@@ -182,6 +115,13 @@ export default {
     border-radius: 18px;
     background: $color;
     margin-bottom: 8px;
+    z-index: 1000;
+
+    &.zoom {
+      width: 400px;
+      height: 200px;
+      transform: scale(1.66);
+    }
   }
 
   .bttnbars {
@@ -224,11 +164,54 @@ export default {
   }
 
   .leftbttn {
+    @include flx_cc;
     width: 50px;
     height: 50px;
     border-radius: 50%;
     background: $dexbgalt;
     transform: translate(20px, -5px);
+    box-shadow: $keyshadow;
+    cursor: pointer;
+
+    &:active {
+      box-shadow: none;
+    }
+  }
+
+  .magzoom {
+    position: relative;
+    width: 16px;
+    height: 16px;
+    border: 3px solid $color;
+    border-radius: 50%;
+    transform: translate(0px, -5px);
+
+    &:after {
+      display: block;
+      width: 4px;
+      height: 10px;
+      background: $color;
+      border-radius: 2px;
+      transform: translate(10px, 8px) rotate(135deg);
+      content: '';
+    }
+
+    &.in:before,
+    &.out:before {
+      display: block;
+      position: absolute;
+      font-size: 2rem;
+    }
+
+    &.in:before {
+      transform: translate(-5px, -2px);
+      content: '-'
+    }
+    &.out:before {
+      font-size: 1.33rem;
+      transform: translate(-5px, 7px);
+      content: '+'
+    }
   }
 
   .center {
