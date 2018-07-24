@@ -1,7 +1,9 @@
 <template lang="pug">
 .list
-  ul
-    li.li(v-if="list.length === 0") Sorry, no Pokémon found.
+  ul(v-if="!listexists")
+    li.li ...loading Vokédex
+  ul(v-else)
+    li.li(v-if="list.length === 0 && listexists") Sorry, no Pokémon found.
     li.li(v-else v-for="(poke) in list" @click="get_poke_info(poke.url, poke.id)") \#{{ formatPokeID(poke.id) }}: {{poke.name | capitalize}}
   .search
     input.pokesearch(type="text" v-model="searchString" placeholder="Search by Name or PokéID")
@@ -65,7 +67,7 @@ export default {
   },
   computed: {
     listexists () {
-      return this.state.pokelistexists
+      return this.$store.state.pokelistexists
     },
     list () {
       // - strip spaces from input and check
