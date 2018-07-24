@@ -24,7 +24,16 @@ export default {
 <style scoped lang="scss">
 @import '../static/__vars.scss';
 @import '../static/__mixins.scss';
-// -- PWR BUTTONS -- //
+
+.topcurve {
+  position: absolute;
+  width: 240px;
+  height: 125px;
+  background: $dexbgdark;
+  border-radius: $dexradius 0 120px;
+  box-shadow: $shadow;
+}
+
 .Pwrbttns {
   position: relative;
   width: 400px;
@@ -32,7 +41,6 @@ export default {
   display: flex;
   background: $dexbgdark;
   border-radius: $dexradius 0 0;
-  // overflow: hidden;
 
   .Pwrlights {
     display: flex;
