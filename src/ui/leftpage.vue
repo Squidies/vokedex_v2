@@ -1,54 +1,21 @@
 <template lang="pug">
 .left
   power-bttns
-  .Display
-    .screen(:class="{'zoom': isZoomed}")
-      dex-display
-    .bttnbars
-      .displaybttn
-      .speakerbars
-        .spkrbrs
-        .spkrbrs
-  .ControlBttns
-    .leftbttn(@click="toggleZoom")
-      span.magzoom.in(v-if="isZoomed")
-      span.magzoom.out(v-else)
-    .center
-      .startselect
-        .bttn.start
-        .bttn.select
-      .pokeid
-        .id
-          div(v-if="currentPokeID") \#{{currentPokeID}}
-    .rightdpad
-      .dpad(@click="toggleShowStats" title="Show PokéStats")
+  display
+  control-bttns
 </template>
 
 <script>
-import DexDisplay from '../components/DexDisplay'
+import Display from './display'
 import PowerBttns from '../components/PowerBttns'
+import ControlBttns from '../components/ControlBttns'
 
 export default {
   name: 'LeftPage',
   components: {
-    'dex-display': DexDisplay,
-    'power-bttns': PowerBttns
-  },
-  methods: {
-    toggleZoom () {
-      this.$store.dispatch('togglezoom')
-    },
-    toggleShowStats () {
-      this.$store.dispatch('toggleshowstats')
-    }
-  },
-  computed: {
-    currentPokeID () {
-      return this.$store.state.current_poke.id
-    },
-    isZoomed () {
-      return this.$store.state.zoom
-    }
+    'display': Display,
+    'power-bttns': PowerBttns,
+    'control-bttns': ControlBttns
   }
 }
 </script>

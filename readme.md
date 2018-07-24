@@ -18,8 +18,6 @@ __IDEAS / ISSUES__
 
 - [ ] FEATURE: Add keyboard navigation / improve accesibility
 - [ ] FEATURE: Add GB sound on 1st PowerON
-- [ ] FEATURE: Add display zoom functionality
-- [ ] FEATURE: Add screen switcher for pokedescription and pokestats
 - [ ] FEATURE: Theme switcher
       * Vuetheme [original]
       * Classic [red]
@@ -29,3 +27,5 @@ __IDEAS / ISSUES__
 __FIXED__
 
 - [X] BUG: Space in search shouldn't limit results.
+- [X] FEATURE: Add screen switcher for pokedescription and pokestats
+- [X] FEATURE: Add display zoom functionality
