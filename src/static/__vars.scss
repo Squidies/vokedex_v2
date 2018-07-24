@@ -9,6 +9,7 @@ $vuegreenshadow: darken($vuegreen, 30%);
 $dexred: rgb(193, 37, 37);
 $dexyellow: rgb(189, 173, 50);
 $dexgreen: rgb(0, 231, 128);
+$outlineblue: rgb(77, 144, 254);
 
 // -- COLOR MAP -- //
 $color: $white;
@@ -18,6 +19,7 @@ $dexbgdark: $vuegreendark;
 $dexbgalt: $vueblue;
 $displayouter: $greylite;
 $listouter: $grey;
+$outline: $outlineblue;
 
 // -- GRADIENTS -- //
 $hingebg: linear-gradient(to right, $vuegreenshadow 0%, $vuegreen 50%, $vuegreenshadow 100%);

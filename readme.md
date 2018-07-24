@@ -11,3 +11,9 @@ __CHANGELOG__
     + code refactor
   * v0.1.0
     + MVP
+
+__IDEAS/ISSUES__
+
+- [ ] FEATURE: Add keyboard navigation / improve accesibility
+- [ ] FEATURE: Add GB sound on 1st PowerON
+- [ ] BUG: Space in search shouldn't limit results.

@@ -79,7 +79,7 @@ body {
 .Dex {
   display: flex;
   align-items: flex-end;
-  opacity: 0.3;
+  // opacity: 0.3;
 
   // -- start/select buttons for left and right pages
 

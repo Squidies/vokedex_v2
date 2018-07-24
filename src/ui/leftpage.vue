@@ -2,7 +2,7 @@
 .left
   .topcurve
   .Pwrbttns
-    #Pwr.Pwr(title="Power" @click="togglePower")
+    #Pwr.Pwr(title="Power" @click="togglePower" @keyup.enter="togglePower" tabindex="1") Power
       .bttn
     .Pwrlights
       .pwr_low
@@ -52,6 +52,11 @@ export default {
 
 <style lang="scss">
 @import '../static/__vars.scss';
+@import '../static/__mixins.scss';
+
+*:focus {
+  box-shadow: 0 0 3px 3px $outline;
+}
 
 .closed .Display,
 .closed .ControlBttns {
@@ -65,7 +70,7 @@ export default {
   border-radius: $dexradius 0 0 $dexradius;
   background: $dexbg;
   box-shadow: $shadow;
-  overflow: hidden;
+  // overflow: hidden;
   z-index: 999;
 
   .topcurve {
@@ -79,11 +84,13 @@ export default {
 
   // -- PWR BUTTONS -- //
   .Pwrbttns {
+    position: relative;
     width: 400px;
     height: 85px;
     display: flex;
     background: $dexbgdark;
-    position: relative;
+    border-radius: $dexradius 0 0;
+    // overflow: hidden;
 
     .Pwrlights {
       display: flex;
@@ -96,6 +103,7 @@ export default {
       width: 240px;
       height: 100px;
       background: $dexbg;
+      background: linear-gradient(to right, $dexbg 0%, $dexbg 210px, transparent 210px, transparent);
       content: '';
       right: -30px;
       position: absolute;
@@ -105,13 +113,16 @@ export default {
   }
 
   .Pwr {
+    @include flx_cc;
     width: 80px;
     height: 80px;
     background: linear-gradient(145deg, rgb(53, 73, 94), rgb(28, 38, 49)), $dexbgalt;
     border: 4px solid $white;
     border-radius: 50%;
     margin: 15px;
+    font-family: $mono;
     cursor: pointer;
+    outline: none;
 
     &:active {
       background: $dexbgalt;

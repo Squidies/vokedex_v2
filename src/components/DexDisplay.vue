@@ -4,18 +4,18 @@
     pokeball(:class="{'searching': searching}")
   .infoscreen(v-else)
     .pokeinfo
-      .stats
-        .name Name: {{current_pokemon.name | capitalize}}
-        .id ID: \#{{current_pokemon.id}}
-        .baseXP BaseXP: {{current_pokemon.baseXP}} XP
-        .height Height: {{current_pokemon.height / 10}}m
-        .weight Weight: {{current_pokemon.weight / 10}}kg
-        .types
-          ul
-            li(v-for="(type, index) in current_pokemon.types") Type {{index + 1}}: {{type.type.name | capitalize}}
       .avatar
         img(:src="current_pokemon.sprite")
-    .entry {{current_pokemon.dexEntry}}
+      .name {{current_pokemon.name | capitalize}}
+      .entry {{current_pokemon.dexEntry}}
+      //- hr
+      //- ul.stats
+      //-   li.baseXP BaseXP: {{current_pokemon.baseXP}} XP
+      //-   li.height Height: {{current_pokemon.height / 10}}m
+      //-   li.weight Weight: {{current_pokemon.weight / 10}}kg
+      //-   li.types
+      //-     ul
+      //-       li(v-for="(type, index) in current_pokemon.types") Type {{index + 1}}: {{type.type.name | capitalize}}
 </template>
 
 <script>
@@ -48,27 +48,7 @@ export default {
   height: 115px;
   margin-top: 15px;
   overflow: auto;
-}
-
-.pokeball {
-  @include flx_cc();
-  width: 80px;
-  height: 80px;
-  margin: 4px;
-  border-radius: 50%;
-  box-shadow: 0 0 2px $listouter;
-  background: $pokeball;
-  transform: rotate(15deg);
-
-  &:after {
-    display: block;
-    width: 20px;
-    height: 20px;
-    border-radius: 50%;
-    border: 4px solid $dexbgalt;
-    background: white;
-    content: '';
-  }
+  padding: 0 8px;
 }
 
 .splashscreen {
@@ -76,10 +56,10 @@ export default {
   width: 100%;
   height: 100%;
   color: $bg;
+  overflow: hidden;
 }
 
 .pokeinfo {
-  display: flex;
   font-family: $mono;
 }
 
@@ -96,5 +76,34 @@ export default {
 
 .entry {
   font-size: 0.8rem;
+}
+
+.stats {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  color: lighten($bg, 50%);
+
+  li {
+    margin-left: 1rem;
+  }
+
+}
+
+.name {
+  font-size: 2rem;
+  margin-left: 0;
+  margin-bottom: 0.66rem;
+  color: $bg;
+
+}
+
+.avatar {
+  float: right;
+
+  img {
+    width: 120px;
+    height: 120px;
+  }
 }
 </style>

@@ -68,14 +68,14 @@ export default {
       let pokelist = this.$store.state.pokelist
 
       return pokelist.filter(pokelist => {
-        // - search by name
-        // - search by id
-        // - else return the whole list
         if (isNaN(this.searchString)) {
+          // - search by name
           return pokelist.name.toLowerCase().includes(this.searchString.toLowerCase())
         } else if (!isNaN(this.searchString)) {
+          // - search by id
           return pokelist.id.replace(/^0+/, '').includes(this.searchString.replace(/^0+/, ''))
         } else {
+          // - else return the whole list
           return pokelist
         }
       })
