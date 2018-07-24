@@ -5,6 +5,7 @@ Vue.use(Vuex)
 
 const state = {
   pokelist: [],
+  pokelistexists: false,
   current_poke: {},
   first_power_up: true,
   power: false,
@@ -17,6 +18,9 @@ const mutations = {
   },
   UPDATE_LIST (state, list) {
     state.pokelist = list
+  },
+  LIST_EXISTS (state) {
+    state.pokelistexists = true
   },
   UPDATE_CURRENT_POKE (state, poke) {
     state.current_poke = poke
@@ -41,6 +45,7 @@ const actions = {
   },
   update_list ({commit}, list) {
     commit('UPDATE_LIST', list)
+    commit('LIST_EXISTS')
   },
   update_current_poke ({commit}, poke) {
     commit('UPDATE_CURRENT_POKE', poke)

@@ -64,16 +64,24 @@ export default {
     }
   },
   computed: {
+    listexists () {
+      return this.state.pokelistexists
+    },
     list () {
+      // - strip spaces from input and check
+      // against current pokelist. remove entries as
+      // needed
+
       let pokelist = this.$store.state.pokelist
+      let string = _.trim(this.searchString)
 
       return pokelist.filter(pokelist => {
         if (isNaN(this.searchString)) {
           // - search by name
-          return pokelist.name.toLowerCase().includes(this.searchString.toLowerCase())
+          return pokelist.name.toLowerCase().includes(string.toLowerCase())
         } else if (!isNaN(this.searchString)) {
           // - search by id
-          return pokelist.id.replace(/^0+/, '').includes(this.searchString.replace(/^0+/, ''))
+          return pokelist.id.replace(/^0+/, '').includes(string.replace(/^0+/, ''))
         } else {
           // - else return the whole list
           return pokelist
@@ -126,6 +134,10 @@ export default {
   border-top: 0;
   border-radius: 0 0 8px 8px;
   background: $color;
+
+  input:focus {
+    z-index: 1001;
+  }
 }
 
 .pokesearch {
@@ -149,5 +161,6 @@ export default {
   background: $dexred;
   font-size: 14px;
   color: $color;
+  z-index: 1000;
 }
 </style>
