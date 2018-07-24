@@ -6,16 +6,18 @@
     .pokeinfo
       .avatar
         img(:src="current_pokemon.sprite")
-      .name {{current_pokemon.name | capitalize}}
-      .entry {{current_pokemon.dexEntry}}
-      hr
-      ul.stats
-        li.baseXP BaseXP: {{current_pokemon.baseXP}} XP
-        li.height Height: {{current_pokemon.height / 10}}m
-        li.weight Weight: {{current_pokemon.weight / 10}}kg
-        li.types
-          ul
-            li(v-for="(type, index) in current_pokemon.types") Type {{index + 1}}: {{type.type.name | capitalize}}
+      div
+        .name {{current_pokemon.name | capitalize}}
+        div(v-if="!showstats")
+          .entry {{current_pokemon.dexEntry}}
+        div(v-else)
+          ul.stats
+            li.baseXP BaseXP: {{current_pokemon.baseXP}} XP
+            li.height Height: {{current_pokemon.height / 10}}m
+            li.weight Weight: {{current_pokemon.weight / 10}}kg
+            li.types
+              ul
+                li(v-for="(type, index) in current_pokemon.types") Type {{index + 1}}: {{type.type.name | capitalize}}
 </template>
 
 <script>
@@ -35,6 +37,9 @@ export default {
     },
     searching () {
       return this.$store.state.searching
+    },
+    showstats () {
+      return this.$store.state.showstats
     }
   }
 }

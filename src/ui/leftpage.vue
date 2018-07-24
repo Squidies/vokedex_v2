@@ -21,7 +21,7 @@
         .id
           div(v-if="currentPokeID") \#{{currentPokeID}}
     .rightdpad
-      .dpad
+      .dpad(@click="toggleShowStats" title="Show PokéStats")
 </template>
 
 <script>
@@ -37,6 +37,9 @@ export default {
   methods: {
     toggleZoom () {
       this.$store.dispatch('togglezoom')
+    },
+    toggleShowStats () {
+      this.$store.dispatch('toggleshowstats')
     }
   },
   computed: {
@@ -252,6 +255,7 @@ export default {
     height: 90px;
     background: $bg;
     border-radius: 8px;
+    cursor: pointer;
 
     &:after {
       display: block;

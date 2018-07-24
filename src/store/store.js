@@ -10,7 +10,8 @@ const state = {
   first_power_up: true,
   power: false,
   searching: false,
-  zoom: false
+  zoom: false,
+  showstats: false
 }
 
 const mutations = {
@@ -40,6 +41,9 @@ const mutations = {
   },
   TOGGLE_ZOOM (state) {
     state.zoom = !state.zoom
+  },
+  TOGGLE_SHOW_STATS (state) {
+    state.showstats = !state.showstats
   }
 }
 
@@ -68,6 +72,9 @@ const actions = {
   },
   togglezoom ({commit}) {
     commit('TOGGLE_ZOOM')
+  },
+  toggleshowstats ({commit}) {
+    commit('TOGGLE_SHOW_STATS')
   }
 }
 
