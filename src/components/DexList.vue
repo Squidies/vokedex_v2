@@ -113,14 +113,9 @@ export default {
   justify-content: center;
   padding: 4px;
 
-<<<<<<< HEAD
-  ul {
-=======
-  ul,
   .loading,
   .emptylist,
   form {
->>>>>>> master
     overflow: auto;
     width: 300px;
     height: 100px;
@@ -135,8 +130,10 @@ export default {
   }
 }
 
-.li {
-  cursor: pointer;
+.pokelist {
+  label {
+    cursor: pointer;
+  }
 }
 
 .search {
