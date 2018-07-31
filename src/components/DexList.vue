@@ -1,12 +1,16 @@
 <template lang="pug">
 .list
-  ul(v-if="!listexists")
-    li.li ...loading
-  ul(v-else)
-    li.li(v-if="list.length === 0 && listexists") Sorry, no Pokémon found.
-    li.li(v-else v-for="(poke) in list" @click="get_poke_info(poke.url, poke.id)") \#{{ formatPokeID(poke.id) }}: {{poke.name | capitalize}}
+  .loading(v-if="!listexists") ...loading
+  .emptylist(v-else-if="list.length === 0 && listexists") Sorry, no Pokémon found.
+  form.pokelist(v-else tabindex="4")
+    div(v-for="(poke) in list")
+      input(type="radio"
+            name="pokemon"
+            :id="`id_${poke.id}`"
+            @keyup.enter.prevent.stop="get_poke_info(poke.url, poke.id)")
+      label(:for="`id_${poke.id}`" @click="get_poke_info(poke.url, poke.id)") \#{{ formatPokeID(poke.id) }}: {{poke.name | capitalize}}
   .search
-    input.pokesearch(type="text" v-model="searchString" placeholder="Search by Name or PokéID")
+    input.pokesearch(type="text" v-model="searchString" placeholder="Search by Name or PokéID" tabindex="2")
     button.btn.clear(@click="clearSearchInput") Clear
 </template>
 
@@ -109,7 +113,10 @@ export default {
   justify-content: center;
   padding: 4px;
 
-  ul {
+  ul,
+  .loading,
+  .emptylist,
+  form {
     overflow: auto;
     width: 300px;
     height: 100px;
