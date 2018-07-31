@@ -1,5 +1,18 @@
 <template lang="pug">
 #Vokedex.Dex(:class="{closed: !hasPower}")
+  .themeswitch
+    .theme
+      input(type="radio" id="voketheme" name="theme")
+      label Vokédex
+    .theme
+      input(type="radio" id="originredtheme" name="theme")
+      label Original Red
+    .theme
+      input(type="radio" id="pikadex" name="theme")
+      label Pikadex
+    .theme
+      input(type="radio" id="squirtletheme" name="theme")
+      label Squirtadex
   left-page
   hinge
   right-page
