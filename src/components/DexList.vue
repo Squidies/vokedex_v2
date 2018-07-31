@@ -113,7 +113,6 @@ export default {
   justify-content: center;
   padding: 4px;
 
-  ul,
   .loading,
   .emptylist,
   form {
@@ -131,8 +130,10 @@ export default {
   }
 }
 
-.li {
-  cursor: pointer;
+.pokelist {
+  label {
+    cursor: pointer;
+  }
 }
 
 .search {

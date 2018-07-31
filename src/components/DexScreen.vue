@@ -55,7 +55,7 @@ export default {
 }
 
 .wrapper {
-  height: 115px;
+  height: 125px;
   margin-top: 15px;
   overflow: auto;
   padding: 0 8px;

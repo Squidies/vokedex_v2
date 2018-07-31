@@ -71,7 +71,7 @@ export default {
 
 body {
   @include flx_cc();
-  background: $bg;
+  background: $color;
   color: $color;
   font-family: $sans;
 }

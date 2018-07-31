@@ -2,6 +2,7 @@
 .left
   power-bttns
   display
+  img.logo(src="../assets/vdexlogo.svg")
   control-bttns
 </template>
 
@@ -31,6 +32,16 @@ export default {
 .closed .Display,
 .closed .ControlBttns {
   visibility: hidden;
+}
+
+img.logo {
+  display: none;
+}
+
+.closed .logo {
+  display: block;
+  width: 250px;
+  margin: 0 auto;
 }
 
 .left {

@@ -68,7 +68,7 @@ export default {
       display: block;
       width: 250px;
       height: 100px;
-      background: $bg;
+      background: $color;
       border-radius: 0 0 0 $dexradius_lg;
       content: '';
 
