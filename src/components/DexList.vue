@@ -131,7 +131,18 @@ export default {
 }
 
 .pokelist {
+  input {
+    position: absolute;
+    opacity: 0;
+
+    &:focus + label {
+      background: $outlineblue;
+    }
+  }
+
   label {
+    display: block;
+    width: 100%;
     cursor: pointer;
   }
 }

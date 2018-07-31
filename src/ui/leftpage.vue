@@ -25,10 +25,6 @@ export default {
 @import '../static/__vars.scss';
 @import '../static/__mixins.scss';
 
-*:focus {
-  box-shadow: 0 0 3px 3px $outline;
-}
-
 .closed .Display,
 .closed .ControlBttns {
   visibility: hidden;

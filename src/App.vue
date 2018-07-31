@@ -1,18 +1,6 @@
 <template lang="pug">
 #Vokedex.Dex(:class="{closed: !hasPower}")
-  .themeswitch
-    .theme
-      input(type="radio" id="voketheme" name="theme")
-      label Vokédex
-    .theme
-      input(type="radio" id="originredtheme" name="theme")
-      label Original Red
-    .theme
-      input(type="radio" id="pikadex" name="theme")
-      label Pikadex
-    .theme
-      input(type="radio" id="squirtletheme" name="theme")
-      label Squirtadex
+  //- theme-switcher
   left-page
   hinge
   right-page
@@ -26,6 +14,7 @@ import axios from 'axios'
 import leftPage from './ui/leftpage'
 import Hinge from './ui/hinge'
 import rightPage from './ui/rightpage'
+import ThemeSwitcher from './components/ThemeSwitcher'
 
 const _BASE_URL = 'https://pokeapi.co/api/v2'
 
@@ -34,7 +23,8 @@ export default {
   components: {
     'left-page': leftPage,
     'hinge': Hinge,
-    'right-page': rightPage
+    'right-page': rightPage,
+    'theme-switcher': ThemeSwitcher
   },
   mounted () {
     // initialize app if pokelist is empty
@@ -89,7 +79,12 @@ body {
   font-family: $sans;
 }
 
+*:focus {
+  box-shadow: 0 0 3px 3px $outline;
+}
+
 .Dex {
+  position: relative;
   display: flex;
   align-items: flex-end;
   // opacity: 0.3;
