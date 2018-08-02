@@ -2,7 +2,7 @@
 .top
   .topcurve
   .Pwrbttns
-    #Pwr.Pwr(title="Power" @click="togglePower" @keyup.enter="togglePower" tabindex="1") Power
+    button#Pwr.Pwr(title="Power" @click="togglePower") Power
       .bttn
     .Pwrlights
       .pwr_low
@@ -73,6 +73,7 @@ export default {
   font-family: $mono;
   cursor: pointer;
   outline: none;
+  color: $white;
 
   &:active {
     background: $dexbgalt;

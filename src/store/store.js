@@ -11,7 +11,8 @@ const state = {
   power: false,
   searching: false,
   zoom: false,
-  showstats: false
+  showstats: false,
+  theme: 'default'
 }
 
 const mutations = {
@@ -44,6 +45,10 @@ const mutations = {
   },
   TOGGLE_SHOW_STATS (state) {
     state.showstats = !state.showstats
+  },
+  CHANGE_THEME (state, theme) {
+    state.theme = theme
+    console.log(theme)
   }
 }
 
@@ -75,6 +80,9 @@ const actions = {
   },
   toggleshowstats ({commit}) {
     commit('TOGGLE_SHOW_STATS')
+  },
+  change_theme ({commit}) {
+    commit('CHANGE_THEME')
   }
 }
 

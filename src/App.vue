@@ -1,9 +1,9 @@
 <template lang="pug">
 #Vokedex.Dex(:class="{closed: !hasPower}")
-  //- theme-switcher
   left-page
   hinge
   right-page
+  theme-switcher
 </template>
 
 <script>

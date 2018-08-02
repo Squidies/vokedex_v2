@@ -2,7 +2,7 @@
 .list
   .loading(v-if="!listexists") ...loading
   .emptylist(v-else-if="list.length === 0 && listexists") Sorry, no Pokémon found.
-  form.pokelist(v-else tabindex="4")
+  form.pokelist
     div(v-for="(poke) in list")
       input(type="radio"
             name="pokemon"
@@ -10,7 +10,7 @@
             @keyup.enter.prevent.stop="get_poke_info(poke.url, poke.id)")
       label(:for="`id_${poke.id}`" @click="get_poke_info(poke.url, poke.id)") \#{{ formatPokeID(poke.id) }}: {{poke.name | capitalize}}
   .search
-    input.pokesearch(type="text" v-model="searchString" placeholder="Search by Name or PokéID" tabindex="2")
+    input.pokesearch(type="text" v-model="searchString" placeholder="Search by Name or PokéID")
     button.btn.clear(@click="clearSearchInput") Clear
 </template>
 
