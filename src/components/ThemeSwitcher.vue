@@ -1,35 +1,29 @@
 <template lang="pug">
 form.themeswitch
   .theme
-    input(type="radio" name="theme" id="default" value="default")
+    input(checked type="radio" name="theme" id="default" value="default" @click="change_theme")
     label(for="default") Default
   .theme
-    input(type="radio" name="theme" id="original" value="original" v-model="picked_theme")
+    input(type="radio" name="theme" id="original" value="original" @click="change_theme")
     label(for="original") Original
   .theme
-    input(type="radio" name="theme" id="pikadex" value="pikadex" v-model="picked_theme")
+    input(type="radio" name="theme" id="pikadex" value="pikadex" @click="change_theme")
     label(for="pikadex") Pikadex
   .theme
-    input(type="radio" name="theme" id="squirtlex" value="squirtlex" v-model="picked_theme")
+    input(type="radio" name="theme" id="squirtlex" value="squirtlex" @click="change_theme")
     label(for="squirtlex") Squirtledex
 </template>
 
 <script>
 
 export default {
-  data () {
-    return {
-      picked_theme: 'Default'
-    }
-  },
   methods: {
-    pick_theme (theme) {
-      this.$store.dispatch('change_theme', theme)
-    }
-  },
-  computed: {
-    current_theme () {
-      return this.$store.state.theme
+    change_theme (val) {
+      this.$store.dispatch('change_theme', val.target.value)
+    },
+    current_theme (val) {
+      console.log(val)
+      return this.$store.state.theme === val.target.value
     }
   }
 }
@@ -44,6 +38,7 @@ export default {
   right: 0;
   top: 0;
   z-index: 1000;
+  color: $bg;
 }
 
 .theme {

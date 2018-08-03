@@ -98,4 +98,12 @@ export default {
   background-repeat: no-repeat;
   margin: 0 8px 0 0;
 }
+
+.original {
+  .Display {
+    &:after {
+      background: $orgbg;
+    }
+  }
+}
 </style>

@@ -48,7 +48,6 @@ const mutations = {
   },
   CHANGE_THEME (state, theme) {
     state.theme = theme
-    console.log(theme)
   }
 }
 
@@ -81,8 +80,8 @@ const actions = {
   toggleshowstats ({commit}) {
     commit('TOGGLE_SHOW_STATS')
   },
-  change_theme ({commit}) {
-    commit('CHANGE_THEME')
+  change_theme ({commit}, theme) {
+    commit('CHANGE_THEME', theme)
   }
 }
 

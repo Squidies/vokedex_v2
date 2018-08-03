@@ -50,4 +50,18 @@ img.logo {
   // overflow: hidden;
   z-index: 999;
 }
+
+// themes
+.original .left {
+  background: $orgbg;
+  box-shadow: $orgshadow;
+}
+
+.pikadex .left {
+  background: $pikabg;
+}
+
+.squirtlex .left {
+  background: $squirtlebg;
+}
 </style>

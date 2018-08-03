@@ -99,4 +99,43 @@ export default {
     background: $dexgreen;
   }
 }
+
+// themes
+.original {
+
+  .topcurve {
+    background: $orgbgdark;
+    box-shadow: $orgshadow;
+  }
+
+  .Pwrbttns {
+    background: $orgbgdark;
+
+    &:after {
+      background: linear-gradient(to right, $orgbg 0%, $orgbg 210px, transparent 210px, transparent);
+    }
+  }
+
+  .Pwr {
+    background: radial-gradient(rgb(169, 233, 247), rgb(29, 198, 236));
+    color: $bg;
+    border-color: white;
+    box-shadow: 0 0 8px 0 rgba(0, 0, 0, 1);
+  }
+}
+
+.pikadex {
+  .Pwrbttns {
+
+    &:after {
+      background: linear-gradient(to right, $pikabg 0%, $pikabg 210px, transparent 210px, transparent);
+    }
+  }
+}
+
+.squirtlex {
+  .Pwrbttns:after {
+    background: linear-gradient(to right, $squirtlebg 0%, $squirtlebg 210px, transparent 210px, transparent);
+  }
+}
 </style>

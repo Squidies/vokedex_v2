@@ -1,3 +1,4 @@
+// Main - default styles
 $white: rgb(220, 220, 220);
 $black: rgb(20, 20, 20);
 $greylite: rgb(125, 119, 119);
@@ -11,15 +12,48 @@ $dexyellow: rgb(189, 173, 50);
 $dexgreen: rgb(0, 231, 128);
 $outlineblue: rgb(77, 144, 254);
 
+// Original Dex
+$originalred: rgb(192, 13, 13);
+
+// Pikadex
+$pikayellow: rgb(252, 229, 1);
+
+// Squirtlex
+$squirtleblue: rgb(151, 203, 216);
+
 // -- COLOR MAP -- //
-$color: $white;
-$bg: $black;
-$dexbg: $vuegreen;
-$dexbgdark: $vuegreendark;
-$dexbgalt: $vueblue;
-$displayouter: $greylite;
-$listouter: $grey;
-$outline: $outlineblue;
+
+  // Default
+  $color: $white;
+  $bg: $black;
+  $dexbg: $vuegreen;
+  $dexbgdark: $vuegreendark;
+  $dexbgalt: $vueblue;
+  $displayouter: $greylite;
+  $listouter: $grey;
+  $outline: $outlineblue;
+
+  // Original
+  // "borrowed" from https://toucantoco.com/pokedex.html
+  $orgbg: $originalred;
+  $orgbgdark: rgb(139, 0, 0);
+  $orgshadow_color: rgb(96, 7, 7);
+  $orghinge: linear-gradient(to right,  $orgbgdark, rgb(192, 13, 13), $orgbgdark);
+  $orghingedark: linear-gradient(to right, $orgshadow_color, $orgbgdark, $orgshadow_color);
+
+  // Pikadex
+  $pikabg: $pikayellow;
+
+  // Squirtlex
+  $squirtlebg: $squirtleblue;
+
+
+
+
+
+
+
+
 
 // -- GRADIENTS -- //
 $hingebg: linear-gradient(to right, $vuegreenshadow 0%, $vuegreen 50%, $vuegreenshadow 100%);
@@ -31,6 +65,8 @@ $pokeball: linear-gradient(to bottom, white 0%, white 45%, $vueblue 45%, $vueblu
 // -- SHADOWS -- //
 $shadow: -5px 5px 0 5px $vuegreenshadow;
 $keyshadow: -2px 2px 1px 0px rgb(33, 45, 59);
+
+$orgshadow: -5px 5px 0 5px $orgshadow_color;
 
 // -- BORDER RADIUS --//
 $dexradius: 30px;

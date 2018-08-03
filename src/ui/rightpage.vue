@@ -172,4 +172,18 @@ export default {
     }
   }
 }
+
+.original .right {
+  background: $orgbg;
+  box-shadow: $orgshadow;
+
+  .topcurve {
+    background: $orgbg;
+  }
+}
+
+.pikadex .right {}
+
+.squirtlex .right {}
+
 </style>

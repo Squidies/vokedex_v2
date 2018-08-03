@@ -1,5 +1,5 @@
 <template lang="pug">
-#Vokedex.Dex(:class="{closed: !hasPower}")
+#Vokedex.Dex(:class="[{closed: !hasPower}, theme]")
   left-page
   hinge
   right-page
@@ -63,6 +63,9 @@ export default {
   computed: {
     hasPower () {
       return this.$store.state.power
+    },
+    theme () {
+      return this.$store.state.theme
     }
   }
 }
