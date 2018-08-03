@@ -182,8 +182,22 @@ export default {
   }
 }
 
-.pikadex .right {}
+.pikadex .right {
+  background: $pikabg;
+  box-shadow: $pikashadow;
 
-.squirtlex .right {}
+  .topcurve {
+    background: $pikabg;
+  }
+}
+
+.squirtlex .right {
+  background: $squirtlebg;
+  box-shadow: $squirtshadow;
+
+  .topcurve {
+    background: $squirtlebg;
+  }
+}
 
 </style>

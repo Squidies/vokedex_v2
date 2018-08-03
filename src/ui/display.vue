@@ -99,11 +99,32 @@ export default {
   margin: 0 8px 0 0;
 }
 
+// Themes
 .original {
+
   .Display {
     &:after {
       background: $orgbg;
     }
   }
 }
+
+.pikadex {
+
+  .Display {
+    &:after {
+      background: $pikabg;
+    }
+  }
+}
+
+.squirtlex {
+
+  .Display {
+    &:after {
+      background: $squirtlebg;
+    }
+  }
+}
+
 </style>

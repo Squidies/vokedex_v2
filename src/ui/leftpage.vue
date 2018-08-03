@@ -59,9 +59,11 @@ img.logo {
 
 .pikadex .left {
   background: $pikabg;
+  box-shadow: $pikashadow;
 }
 
 .squirtlex .left {
   background: $squirtlebg;
+  box-shadow: $squirtshadow;
 }
 </style>

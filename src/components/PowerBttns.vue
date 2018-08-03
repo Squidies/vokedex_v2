@@ -125,7 +125,14 @@ export default {
 }
 
 .pikadex {
+
+  .topcurve {
+    background: $pikabgdark;
+    box-shadow: $pikashadow;
+  }
+
   .Pwrbttns {
+    background: $pikabgdark;
 
     &:after {
       background: linear-gradient(to right, $pikabg 0%, $pikabg 210px, transparent 210px, transparent);
@@ -134,8 +141,18 @@ export default {
 }
 
 .squirtlex {
-  .Pwrbttns:after {
-    background: linear-gradient(to right, $squirtlebg 0%, $squirtlebg 210px, transparent 210px, transparent);
+
+  .topcurve {
+    background: $squirtlebgdark;
+    box-shadow: $squirtshadow;
+  }
+
+  .Pwrbttns {
+    background: $squirtlebgdark;
+
+    &:after {
+      background: linear-gradient(to right, $squirtlebg 0%, $squirtlebg 210px, transparent 210px, transparent);
+    }
   }
 }
 </style>

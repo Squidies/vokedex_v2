@@ -24,8 +24,20 @@
   box-shadow: $orgshadow;
 }
 
-.pikadex .hinge {}
+.pikadex .hinge {
+  background: $pikahingedark, $pikahingedark, $pikahingedark, $pikahinge, $pikabg;
+  background-size: 50px 50px, 50px 50px, 50px 50px, 100% 100%;
+  background-position: 0 100%, 0 100px, 0 0, 0 0;
+  background-repeat: no-repeat;
+  box-shadow: $pikashadow;
+}
 
-.squirtlex .hinge {}
+.squirtlex .hinge {
+  background: $squirthingedark, $squirthingedark, $squirthingedark, $squirthinge, $squirtlebg;
+  background-size: 50px 50px, 50px 50px, 50px 50px, 100% 100%;
+  background-position: 0 100%, 0 100px, 0 0, 0 0;
+  background-repeat: no-repeat;
+  box-shadow: $squirtshadow;
+}
 
 </style>

@@ -17,9 +17,13 @@ $originalred: rgb(192, 13, 13);
 
 // Pikadex
 $pikayellow: rgb(252, 229, 1);
+$pikayellowdark: darken($pikayellow, 20%);
+$pikayellowshadow: darken($pikayellow, 30%);
 
 // Squirtlex
 $squirtleblue: rgb(151, 203, 216);
+$squirtlebluedark: darken($squirtleblue, 20%);
+$squirtleblueshadow: darken($squirtleblue, 30%);
 
 // -- COLOR MAP -- //
 
@@ -38,21 +42,14 @@ $squirtleblue: rgb(151, 203, 216);
   $orgbg: $originalred;
   $orgbgdark: rgb(139, 0, 0);
   $orgshadow_color: rgb(96, 7, 7);
-  $orghinge: linear-gradient(to right,  $orgbgdark, rgb(192, 13, 13), $orgbgdark);
-  $orghingedark: linear-gradient(to right, $orgshadow_color, $orgbgdark, $orgshadow_color);
 
   // Pikadex
   $pikabg: $pikayellow;
+  $pikabgdark: $pikayellowdark;
 
   // Squirtlex
   $squirtlebg: $squirtleblue;
-
-
-
-
-
-
-
+  $squirtlebgdark: $squirtlebluedark;
 
 
 // -- GRADIENTS -- //
@@ -61,12 +58,22 @@ $hng: linear-gradient(to right, rgba(30,11,11,0.5) 0%,rgba(25,71,51,0.5) 50%,rgb
 $bar: linear-gradient($black, $black);
 $pokeball: linear-gradient(to bottom, white 0%, white 45%, $vueblue 45%, $vueblue 55%, $vuegreen 55%, $vuegreen 100%);
 
+$orghinge: linear-gradient(to right,  $orgbgdark, rgb(192, 13, 13), $orgbgdark);
+$orghingedark: linear-gradient(to right, $orgshadow_color, $orgbgdark, $orgshadow_color);
+
+$pikahinge: linear-gradient(to right, $pikabgdark, $pikabg, $pikabgdark);
+$pikahingedark: linear-gradient(to right, $pikayellowshadow, $pikabgdark, $pikayellowshadow);
+
+$squirthinge: linear-gradient(to right, $squirtlebgdark, $squirtlebg, $squirtlebgdark);;
+$squirthingedark: linear-gradient(to right, $squirtleblueshadow, $squirtlebgdark, $squirtleblueshadow);;
 
 // -- SHADOWS -- //
 $shadow: -5px 5px 0 5px $vuegreenshadow;
 $keyshadow: -2px 2px 1px 0px rgb(33, 45, 59);
 
 $orgshadow: -5px 5px 0 5px $orgshadow_color;
+$pikashadow: -5px 5px 0 5px $pikayellowshadow;
+$squirtshadow: -5px 5px 0 5px $squirtleblueshadow;
 
 // -- BORDER RADIUS --//
 $dexradius: 30px;
