@@ -3,7 +3,7 @@
   left-page
   hinge
   right-page
-  theme-switcher
+  //- theme-switcher
 </template>
 
 <script>
