@@ -17,7 +17,8 @@
 <script>
 import _ from 'lodash'
 import axios from 'axios'
-const _BASE_URL = 'https://pokeapi.co/api/v2'
+// const _BASE_URL = 'https://pokeapi.co/api/v2'
+const _BASE_URL = '//pokeapi.salestock.net/api/v2'
 
 export default {
   name: 'DexList',
