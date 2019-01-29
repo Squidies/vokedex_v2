@@ -14,8 +14,7 @@ import leftPage from './ui/leftpage'
 import Hinge from './ui/hinge'
 import rightPage from './ui/rightpage'
 
-// const _BASE_URL = 'https://pokeapi.co/api/v2'
-const _BASE_URL = '//pokeapi.salestock.net/api/v2'
+const _BASE_URL = 'https://pokeapi.co/api/v2'
 
 export default {
   name: 'Vokedex',
