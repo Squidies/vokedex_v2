@@ -40,11 +40,13 @@ export default {
         })
     },
     get_pokemon (count) {
+      console.log(count)
       axios.get(`${_BASE_URL}/pokemon-species?limit=${count}`)
         .then(response => {
           // extract id from pokemon-species url and create new pokelist with id
           let list = _.map(response.data.results, result => {
-            let id = result.url.match(/(\/\d{1,3}\/)/g)[0].replace(/\/*\//g, '').toString()
+            console.log(result);
+            let id = result.url.match(/(\/\d{1,4}\/)/g)[0].replace(/\/*\//g, '').toString()
             return {
               name: result.name,
               url: result.url,

@@ -5,7 +5,7 @@
   .infoscreen(v-else)
     .pokeinfo
       .avatar
-        img(:src="current_pokemon.sprite")
+        img(v-if="!!current_pokemon.sprite" :src="current_pokemon.sprite")
       div
         .name {{current_pokemon.name | capitalize}}
         div(v-if="!showstats")

@@ -36,9 +36,11 @@ export default {
       // get dex flavor text
       axios.get(url)
         .then(response => {
-          let dexEntry = _.find(response.data.flavor_text_entries, text => {
+          const flavor_text_entries = response.data.flavor_text_entries
+          console.log(flavor_text_entries)
+          let dexEntry = flavor_text_entries.length ? _.find(response.data.flavor_text_entries, text => {
             return text.language.name === 'en'
-          })
+          }) : ''
           return dexEntry.flavor_text
         })
         // build current pokemon data
